@@ -224,7 +224,7 @@ describe('OrdersService', () => {
 
       expect(prismaMock.order.update).toHaveBeenCalledWith({
         where: { id: '1' },
-        data: { deletedAt: expect.any(Date) },
+        data: { deletedAt: expect.any(Date) as Date },
       });
     });
 

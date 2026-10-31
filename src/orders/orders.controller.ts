@@ -1,9 +1,13 @@
 import {
   Body,
-  Controller, Delete,
-  Get, HttpCode, HttpStatus,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
   Param,
-  ParseUUIDPipe, Patch,
+  ParseUUIDPipe,
+  Patch,
   Post,
   Query,
 } from '@nestjs/common';
@@ -32,10 +36,7 @@ export class OrdersController {
   }
 
   @Patch(':id')
-  update(
-    @Param('id', ParseUUIDPipe) id: string,
-    @Body() dto: UpdateOrderDto,
-  ) {
+  update(@Param('id', ParseUUIDPipe) id: string, @Body() dto: UpdateOrderDto) {
     return this.orders.update(id, dto);
   }
 

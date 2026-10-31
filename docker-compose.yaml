@@ -16,5 +16,19 @@ services:
       timeout: 5s
       retries: 5
 
+  api:
+    build: .
+    container_name: naporta-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      # Inside Docker Network, the db host is the name and the service
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/naporta?schema=public
+      PORT: 3000
+    ports:
+      - "${PORT:-3000}:3000"
+
 volumes:
   postgres_data:
